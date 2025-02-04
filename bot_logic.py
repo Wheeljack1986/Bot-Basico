@@ -1,7 +1,7 @@
 import random
 
 def gen_pass(pass_length):
-    elements = "+-/*!&$#?=@<>"
+    elements = "+-/*!&$#?=@<>ABCDEFGHIJKLMNOPQRSTUVXWYZabcdefghijklmnopqrstuvwxyz"
     password = ""
 
     for i in range(pass_length):
