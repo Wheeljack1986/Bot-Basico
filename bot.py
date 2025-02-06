@@ -1,4 +1,6 @@
 import discord
+import random
+import os
 from discord.ext import commands
 from bot_logic import *
 intents = discord.Intents.default()
@@ -58,4 +60,25 @@ async def roll(ctx, dice: str):
     result = ', '.join(str(random.randint(1, limit)) for r in range(rolls))
     await ctx.send(result)
 
-bot.run("Tu token  ")
+@bot.command()
+async def mem(ctx):
+    lista = os.listdir("imagenes")
+    img_name = random.choice(lista)
+    with open(f'imagenes/{img_name}', 'rb') as f:
+            picture = discord.File(f)
+    # A continuación, podemos enviar este archivo como parámetro.
+    await ctx.send(file=picture)
+
+@bot.command('duck')
+async def duck(ctx):
+    '''Una vez que llamamos al comando duck, 
+    el programa llama a la función get_duck_image_url'''
+    image_url = get_duck_image_url()
+    await ctx.send(image_url)
+
+@bot.command('fox')
+async def fox(ctx):
+    image_link = get_fox_image_link()
+    await ctx.send(image_link)
+
+bot.run("Tu token")
