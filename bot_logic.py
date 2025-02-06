@@ -1,4 +1,17 @@
 import random
+import requests
+
+def get_duck_image_url():    
+    url = 'https://random-d.uk/api/random'
+    res = requests.get(url)
+    data = res.json()
+    return data['url']
+
+def get_fox_image_link():    
+    link = 'https://randomfox.ca/floof/'
+    res = requests.get(link)
+    data = res.json()
+    return data['link']
 
 def gen_pass(pass_length):
     elements = "+-/*!&$#?=@<>ABCDEFGHIJKLMNOPQRSTUVXWYZabcdefghijklmnopqrstuvwxyz"
