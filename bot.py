@@ -69,6 +69,14 @@ async def mem(ctx):
     # A continuación, podemos enviar este archivo como parámetro.
     await ctx.send(file=picture)
 
+@bot.command()
+async def animales(ctx):
+    liste = os.listdir("animemes")
+    img_nome = random.choice(liste)
+    with open(f'animemes/{img_nome}', 'rb') as f:
+            picture = discord.File(f)
+    await ctx.send(file=picture)
+
 @bot.command('duck')
 async def duck(ctx):
     '''Una vez que llamamos al comando duck, 
@@ -81,4 +89,4 @@ async def fox(ctx):
     image_link = get_fox_image_link()
     await ctx.send(image_link)
 
-bot.run("Tu token")
+bot.run("TOKEN")
